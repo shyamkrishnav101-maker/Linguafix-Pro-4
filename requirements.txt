@@ -1,0 +1,3 @@
+Flask>=3.0
+rapidfuzz>=3.0
+wordfreq>=3.0

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Linguafix Pro 4.0</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div class="grid-background"></div>
+
+
+<!-- HEADER -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            L
+        </div>
+
+        <div class="brand-name">
+            Linguafix <b>Pro</b>
+            <span>4.0</span>
+        </div>
+
+    </div>
+
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        Intelligent Everyday English Engine
+
+    </div>
+
+</header>
+
+
+
+<main class="shell">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="eyebrow">
+        NLP WRITING ASSISTANT · VERSION 4.0
+    </div>
+
+
+    <h1>
+        Fix the words.
+        <br>
+
+        <span>
+            Understand the meaning.
+        </span>
+    </h1>
+
+
+    <p>
+        Linguafix analyzes every word, detects spelling and grammar
+        problems, reconstructs incomplete sentences, and provides
+        meaning-based suggestions when the original intent is unclear.
+    </p>
+
+</section>
+
+
+
+<!-- MAIN WORKSPACE -->
+
+<section class="workspace">
+
+
+<!-- INPUT -->
+
+<div class="card editor-card">
+
+    <div class="card-head">
+
+        <div class="card-title">
+
+            <span class="live-dot"></span>
+
+            Your input
+
+        </div>
+
+
+        <button id="clearBtn"
+                class="ghost">
+
+            Clear
+
+        </button>
+
+    </div>
+
+
+    <textarea
+        id="input"
+        placeholder="Type or paste your sentence here...
+
+Examples:
+
+she go to college
+she going to college
+she college
+she gone to college
+i want laptop good for coding"></textarea>
+
+
+    <div class="editor-foot">
+
+        <span id="counter">
+            0 words · 0 characters
+        </span>
+
+
+        <button id="analyzeBtn"
+                class="primary">
+
+            Analyze meaning
+
+            <span>→</span>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- RESULT -->
+
+<div class="card result-card">
+
+    <div class="card-head">
+
+        <div class="card-title">
+
+            <span class="live-dot good"></span>
+
+            Best corrected sentence
+
+        </div>
+
+
+        <button id="copyBtn"
+                class="ghost">
+
+            Copy
+
+        </button>
+
+    </div>
+
+
+    <div id="corrected"
+         class="result-text empty">
+
+        Your improved sentence will appear here.
+
+    </div>
+
+
+    <!-- INTENT -->
+
+    <div id="intentBox"
+         class="intent-box hidden">
+    </div>
+
+
+    <!-- SCORE -->
+
+    <div class="score-row">
+
+        <div class="score-ring">
+
+            <span id="score">
+                —
+            </span>
+
+            <small>
+                /100
+            </small>
+
+        </div>
+
+
+        <div>
+
+            <strong id="engine">
+                Ready
+            </strong>
+
+            <p>
+                Score indicates the consistency of the detected
+                language issues and corrections.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+
+    <div class="stat-card">
+
+        <span id="words">
+            0
+        </span>
+
+        <small>
+            Words
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span id="sentences">
+            0
+        </span>
+
+        <small>
+            Sentences
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span id="characters">
+            0
+        </span>
+
+        <small>
+            Characters
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span id="unique">
+            0
+        </span>
+
+        <small>
+            Unique words
+        </small>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <span id="issues">
+            0
+        </span>
+
+        <small>
+            Issues
+        </small>
+
+    </div>
+
+</section>
+
+
+
+<!-- DETECTED ISSUES -->
+
+<section class="card issues-card">
+
+    <div class="card-head">
+
+        <div class="card-title">
+            Detected improvements
+        </div>
+
+
+        <span id="issueCount"
+              class="pill">
+
+            0 issues
+
+        </span>
+
+    </div>
+
+
+    <div id="issuesList"
+         class="issues-list">
+
+        <div class="empty-state">
+
+            Run an analysis to see grammar,
+            spelling and sentence improvements.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MEANING SUGGESTIONS -->
+
+<section id="suggestionsSection"
+         class="card suggestions-card hidden">
+
+    <div class="card-head">
+
+        <div class="card-title">
+
+            <span class="icon">🎯</span>
+
+            Meaning suggestions
+
+        </div>
+
+
+        <span id="suggestionCount"
+              class="pill">
+
+            0 suggestions
+
+        </span>
+
+    </div>
+
+
+    <p class="section-description">
+
+        The original sentence may have more than one possible meaning.
+        Choose the version that matches what you intended.
+
+    </p>
+
+
+    <div id="suggestionsList"
+         class="suggestions-list">
+
+    </div>
+
+</section>
+
+
+
+<!-- WORD ANALYSIS -->
+
+<section class="card word-analysis-card">
+
+    <div class="card-head">
+
+        <div class="card-title">
+
+            <span class="icon">🔎</span>
+
+            Word-by-word analysis
+
+        </div>
+
+    </div>
+
+
+    <p class="section-description">
+
+        Linguafix examines each word independently before
+        constructing the corrected sentence.
+
+    </p>
+
+
+    <div class="word-table-wrapper">
+
+        <table class="word-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        Input
+                    </th>
+
+                    <th>
+                        Normalized
+                    </th>
+
+                    <th>
+                        Correction
+                    </th>
+
+                    <th>
+                        Type
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="wordAnalysisBody">
+
+                <tr>
+
+                    <td colspan="6"
+                        class="empty-state">
+
+                        Run an analysis to inspect
+                        individual words.
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<!-- MEANING RECONSTRUCTION -->
+
+<section id="rewriteSection"
+         class="card rewrite-card hidden">
+
+    <div class="card-head">
+
+        <div class="card-title">
+
+            <span class="icon">🧠</span>
+
+            Meaning reconstruction
+
+        </div>
+
+    </div>
+
+
+    <div class="rewrite-grid">
+
+
+        <div>
+
+            <label>
+                ORIGINAL
+            </label>
+
+            <div id="originalMeaning"
+                 class="rewrite-box">
+
+                —
+
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <label>
+                RECONSTRUCTED MEANING
+            </label>
+
+            <div id="meaningRewrite"
+                 class="rewrite-box highlighted">
+
+                —
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- RULE STRIP -->
+
+<section class="rule-strip">
+
+
+    <div>
+
+        <b>
+            Capitalization
+        </b>
+
+        <span>
+            Sentence starts
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <b>
+            Spelling
+        </b>
+
+        <span>
+            Common word errors
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <b>
+            Grammar
+        </b>
+
+        <span>
+            Subject + verb agreement
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <b>
+            Missing words
+        </b>
+
+        <span>
+            Auxiliaries & prepositions
+        </span>
+
+    </div>
+
+
+    <div>
+
+        <b>
+            Intent awareness
+        </b>
+
+        <span>
+            Meaning-based suggestions
+        </span>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    LINGUAFIX PRO 4.0
+    ·
+    INTELLIGENT EVERYDAY ENGLISH ENGINE
+
+</footer>
+
+
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>
